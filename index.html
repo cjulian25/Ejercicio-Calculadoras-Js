@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Calculadora Edicion1</title>
+</head>
+<body>
+    
+    <div class="contenedor__calculadora">
+        <div class="contenedor__pantalla">
+            <div name="pantalla" class="pantalla--superior" id="pantallaSuperior"> </div>
+            <div class="pantalla--inferior">
+                <input type="number" class="contenedor--numero" id="num1">
+                <div class="contenedor--operando" id="operando"></div>
+                <input type="number" class="contenedor--numero" id="num2">
+            </div>
+        </div>
+        <div class="contenedor__botones">
+            <button class="btn numeros numero--9" id="numero9">9</button>
+            <button class="btn numeros numero--8" id="numero8">8</button>
+            <button class="btn numeros numero--7" id="numero7">7</button>
+            <button class="btn numeros numero--6" id="numero6">6</button>
+            <button class="btn numeros numero--5" id="numero5">5</button>
+            <button class="btn numeros numero--4" id="numero4">4</button>
+            <button class="btn numeros numero--3" id="numero3">3</button>
+            <button class="btn numeros numero--2" id="numero2">2</button>
+            <button class="btn numeros numero--1" id="numero1">1</button>
+            <button class="btn numeros numero--0" id="numero0">0</button>
+
+            <button class="btn operaciones boton--dividir" id="boton--dividir">/</button>
+            <button class="btn operaciones boton--multiplicar" id="boton--multiplicar">*</button>
+            <button class="btn operaciones boton--restar" id="boton--restar">-</button>
+            <button class="btn operaciones boton--sumar" id="boton--sumar">+</button>
+            <button class="btn operaciones boton--C" id="boton--C">C</button>
+            <button class="btn operaciones boton--igual" id="boton--igual">=</button>
+        </div>
+    </div>
+
+    <script src="./main.js"></script>
+
+</body>
+</html>
