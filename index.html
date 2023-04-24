@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,15 +8,16 @@
     <link rel="stylesheet" href="./style.css">
     <title>Calculadora Edicion1</title>
 </head>
+
 <body>
-    
+
     <div class="contenedor__calculadora">
         <div class="contenedor__pantalla">
             <div name="pantalla" class="pantalla--superior" id="pantallaSuperior"> </div>
             <div class="pantalla--inferior">
-                <input type="number" class="contenedor--numero" id="num1">
+                <input type="number" class="contenedor--numero" id="num1" disabled>
+                <!-- <input type="number" class="contenedor--numero" id="num2"> -->
                 <div class="contenedor--operando" id="operando"></div>
-                <input type="number" class="contenedor--numero" id="num2">
             </div>
         </div>
         <div class="contenedor__botones">
@@ -42,4 +44,5 @@
     <script src="./main.js"></script>
 
 </body>
+
 </html>
