@@ -1,74 +1,255 @@
-const num1 = document.getElementById('num1');
-const pantallaSuperior = document.getElementById('pantallaSuperior');
-const operando = document.getElementById('operando');
-const calculadora = document.querySelector('.contenedor__calculadora');
+const num0 = document.getElementById('numero0')
+const num1 = document.getElementById('numero1')
+const num2 = document.getElementById('numero2')
+const num3 = document.getElementById('numero3')
+const num4 = document.getElementById('numero4')
+const num5 = document.getElementById('numero5')
+const num6 = document.getElementById('numero6')
+const num7 = document.getElementById('numero7')
+const num8 = document.getElementById('numero8')
+const num9 = document.getElementById('numero9')
 
-let inputSeleccionado = null;
-let num2;
+const raizCuadrada = document.getElementById('raizCuadrada')
+const punto = document.getElementById('botonPunto')
+const potencia = document.getElementById('botonPotencia')
+const borrarUno = document.getElementById('botonBorrar')
+const borrarTodo = document.getElementById('botonC')
+const igual = document.getElementById('botonIgual')
+const sumar = document.getElementById('botonSumar')
+const restar = document.getElementById('botonRestar')
+const multiplicar = document.getElementById('botonMultiplicar')
+const dividir = document.getElementById('botonDividir')
 
-num1.disabled = false;
+const pantallaSuperior = document.querySelector('.pantalla--superior')
+const array = []
+const newArray = []
+let conteoDivision0 = 0
 
-num1.addEventListener('click', function() {
-    inputSeleccionado = num1;
+pantallaSuperior.textContent = 0
+
+function contenido() {
+    let contenidoPantalla = "";
+    for (let i = 0; i < array.length; i++) {
+        contenidoPantalla += array[i];
+    }
+    pantallaSuperior.textContent = contenidoPantalla;
+    console.log(array)
+}
+
+sumar.addEventListener('click', function() {
+    if ((array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/")) {
+        array[array.length - 1] = "+"
+    } else {
+        array.push("+");
+        contenido()
+    }
 })
 
-calculadora.addEventListener(`click`, function(evento) {
-    pantallaSuperior.textContent = "";
-    if (evento.target.classList.contains('numeros')) {
-        if (inputSeleccionado) {
-            inputSeleccionado.value += evento.target.textContent;
+restar.addEventListener(`click`, function() {
+    if ((array[array.length - 1] == "-") || (array[array.length - 1] == "+") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/")) {
+        array[array.length - 1] = "-"
+    } else {
+        array.push("-");
+        contenido()
+    }
+})
+
+multiplicar.addEventListener(`click`, function() {
+    if ((array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-")) {
+        array[array.length - 1] = "*"
+    } else {
+        array.push("*");
+        contenido()
+    }
+})
+
+dividir.addEventListener(`click`, function() {
+    if ((array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-")) {
+        array[array.length - 1] = "/"
+    } else {
+        array.push("/");
+        contenido()
+    }
+})
+
+raizCuadrada.addEventListener(`click`, function() {
+    if (array[array.length - 1] == "√") {
+        array[array.length - 1] = "√"
+    } else {
+        array.push("√");
+        contenido()
+    }
+})
+
+punto.addEventListener(`click`, function() {
+    if (array[array.length - 1] == ".") {
+        array[array.length - 1] = "."
+    } else {
+        array.push(".");
+        contenido()
+    }
+})
+
+potencia.addEventListener(`click`, function() {
+    if (array[array.length - 1] == "^") {
+        array[array.length - 1] = "^"
+    } else {
+        array.push("^");
+        contenido()
+    }
+})
+
+borrarUno.addEventListener(`click`, function() {
+    // array.splice(-1, 1)
+    array.pop()
+    contenido()
+})
+
+borrarTodo.addEventListener(`click`, function() {
+    pantallaSuperior.textContent = 0
+    resultado = 0
+    conteoDivision0 = 0
+    array.splice(0, array.length)
+    newArray.splice(0, newArray.length)
+    console.log(array)
+})
+
+igual.addEventListener(`click`, function() {
+    let resultado = 0
+    let concatenado = "";
+
+    for (let i = 0; i < array.length; i++) {
+        const elemento = array[i];
+        if (elemento === "+" || elemento === "-" || elemento === "*" || elemento === "/" || elemento === "^" || elemento === "√") {
+            newArray.push(concatenado);
+            newArray.push(elemento);
+            concatenado = "";
+        } else {
+            concatenado += elemento;
         }
-    } else
-    if (evento.target.id == "boton--sumar") {
-        operando.textContent = "+";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-        console.log(Number(num1.value))
-    } else if (evento.target.id == "boton--restar") {
-        operando.textContent = "-";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == "boton--multiplicar") {
-        operando.textContent = "*";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == "boton--dividir") {
-        operando.textContent = "/";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == 'boton--C') {
-        num1.value = "";
-        num2 = "";
-        pantallaSuperior.textContent = "";
-        operando.textContent = "";
-        num1.disabled = false;
-    } else if (evento.target.id = "boton--igual") {
-        if (operando.textContent == "+") {
-            pantallaSuperior.textContent = Number(num1.value) + Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "-") {
-            pantallaSuperior.textContent = Number(num1.value) - Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "*") {
-            pantallaSuperior.textContent = Number(num1.value) * Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "/") {
-            if ((num2 != "") & (num1.value == "")) {
-                pantallaSuperior.textContent = `Debes ingresar un divisor`;
-            } else if ((num2 == "") & (num1.value != "")) {
-                pantallaSuperior.textContent = `0`;
-            } else if ((num2 != "") & (num1.value == 0)) {
-                pantallaSuperior.textContent = `No se puede dividir entre 0`;
-            } else if ((num1.value != "") & (num2 != "")) {
-                pantallaSuperior.textContent = Number(num2) / Number(num1.value);
-                num2 = "";
+    }
+    newArray.push(concatenado);
+
+    for (let i = 0; i < newArray.length; i++) {
+        if (newArray[i] === "^") {
+            resultado = Number(newArray[i - 1]) ** Number(newArray[i + 1])
+            newArray.splice(i - 1, 3, resultado)
+            console.log(resultado)
+            console.log(newArray)
+            i = 0
+        }
+    }
+
+    for (let i = 0; i < newArray.length; i++) {
+        console.log(newArray)
+        console.log(newArray)
+        if (newArray[i] === "√" && (newArray[i - 1] == NaN || newArray[i - 1] == "")) {
+            resultado = Number(newArray[i + 1]) ** (1 / 2)
+            newArray.splice(i, 2, resultado)
+            console.log(resultado)
+            console.log(newArray)
+            i = 0
+        }
+        if (newArray[i] === "√" && newArray[i - 1] != NaN) {
+            resultado = Number(newArray[i - 1]) * Number(newArray[i + 1]) ** (1 / 2)
+            newArray.splice(i - 1, 3, resultado)
+            console.log(resultado)
+            console.log(newArray)
+            i = 0
+        }
+    }
+
+    for (let i = 0; i < newArray.length; i++) {
+        if (newArray[i] === "*") {
+            resultado = Number(newArray[i - 1]) * Number(newArray[i + 1])
+            newArray.splice(i - 1, 3, resultado)
+            console.log(resultado)
+            i = 0
+        }
+        if (newArray[i] === "/") {
+            if (newArray[i + 1] == "0") {
+                resultado = `No se puede dividir entre 0`
+                conteoDivision0 = 1
+                break
+            } else {
+                resultado = Number(newArray[i - 1]) / Number(newArray[i + 1])
+                newArray.splice(i - 1, 3, resultado)
+                console.log(resultado)
+                i = 0
             }
         }
     }
+
+    for (let i = 0; i < newArray.length; i++) {
+        if (conteoDivision0 == 1) {
+            resultado = `No se puede dividir entre 0`
+            break
+        }
+        if (newArray[i] === "+") {
+            resultado = Number(newArray[i - 1]) + Number(newArray[i + 1])
+            newArray.splice(i - 1, 3, resultado)
+            console.log(resultado)
+            i = 0
+        }
+        if (newArray[i] === "-") {
+            resultado = Number(newArray[i - 1]) - Number(newArray[i + 1])
+            newArray.splice(i - 1, 3, resultado)
+            console.log(resultado)
+            i = 0
+        }
+    }
+    pantallaSuperior.textContent = resultado
+    conteoDivision0 = 0
+})
+
+num0.addEventListener(`click`, function() {
+    array.push("0");
+    contenido()
+})
+
+num1.addEventListener(`click`, function() {
+    array.push("1");
+    contenido()
+})
+
+num2.addEventListener(`click`, function() {
+    array.push("2");
+    contenido()
+})
+
+num3.addEventListener(`click`, function() {
+    array.push("3");
+    contenido()
+})
+
+num4.addEventListener(`click`, function() {
+    array.push("4");
+    contenido()
+})
+
+num5.addEventListener(`click`, function() {
+    array.push("5");
+    contenido()
+})
+
+num6.addEventListener(`click`, function() {
+    array.push("6");
+    contenido()
+})
+
+num7.addEventListener(`click`, function() {
+    array.push("7");
+    contenido()
+})
+
+num8.addEventListener(`click`, function() {
+    array.push("8");
+    contenido()
+})
+
+num9.addEventListener(`click`, function() {
+    array.push("9");
+    contenido()
 })
 
 /* --------------- ESCUCHA POR TECLADO ---------------*/
@@ -87,6 +268,10 @@ document.addEventListener('keydown', function(event) {
         multiplicar.click();
     } else if (teclaPresionada === '/') {
         dividir.click();
+    } else if (teclaPresionada === '.' || teclaPresionada === ',') {
+        punto.click();
+    } else if (teclaPresionada.altKeyPressed && teclaPresionada.keyCode === '94') {
+        potencia.click();
     } else if (teclaPresionada === 'Backspace') { // Ejecutar función de borrar uno
         borrarUno.click();
     } else if (teclaPresionada === "0") {
