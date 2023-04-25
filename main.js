@@ -38,7 +38,6 @@ function contenido() {
 
 sumar.addEventListener('click', function() {
     if ((array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "+"
     } else {
         array.push("+");
         contenido()
@@ -47,7 +46,6 @@ sumar.addEventListener('click', function() {
 
 restar.addEventListener(`click`, function() {
     if ((array[array.length - 1] == "-") || (array[array.length - 1] == "+") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "-"
     } else {
         array.push("-");
         contenido()
@@ -56,7 +54,6 @@ restar.addEventListener(`click`, function() {
 
 multiplicar.addEventListener(`click`, function() {
     if ((array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "*"
     } else {
         array.push("*");
         contenido()
@@ -65,7 +62,6 @@ multiplicar.addEventListener(`click`, function() {
 
 dividir.addEventListener(`click`, function() {
     if ((array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "/"
     } else {
         array.push("/");
         contenido()
@@ -74,7 +70,6 @@ dividir.addEventListener(`click`, function() {
 
 raizCuadrada.addEventListener(`click`, function() {
     if ((array[array.length - 1] == "√") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "√"
     } else {
         array.push("√");
         contenido()
@@ -83,7 +78,6 @@ raizCuadrada.addEventListener(`click`, function() {
 
 punto.addEventListener(`click`, function() {
     if ((array[array.length - 1] == ".") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^")) {
-        array[array.length - 1] = "."
     } else {
         array.push(".");
         contenido()
@@ -92,7 +86,6 @@ punto.addEventListener(`click`, function() {
 
 potencia.addEventListener(`click`, function() {
     if ((array[array.length - 1] == "^") || (array[array.length - 1] == "√") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == ".")) {
-        array[array.length - 1] = "^"
     } else {
         array.push("^");
         contenido()
@@ -141,7 +134,6 @@ igual.addEventListener(`click`, function() {
     }
 
     for (let i = 0; i < newArray.length; i++) {
-        console.log(newArray)
         console.log(newArray)
         if (newArray[i] === "√" && (newArray[i - 1] == NaN || newArray[i - 1] == "")) {
             resultado = Number(newArray[i + 1]) ** (1 / 2)
