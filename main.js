@@ -1,74 +1,127 @@
-const num1 = document.getElementById('num1');
+const num0 = document.getElementById('numero0')
+const num1 = document.getElementById('numero1')
+const num2 = document.getElementById('numero2')
+const num3 = document.getElementById('numero3')
+const num4 = document.getElementById('numero4')
+const num5 = document.getElementById('numero5')
+const num6 = document.getElementById('numero6')
+const num7 = document.getElementById('numero7')
+const num8 = document.getElementById('numero8')
+const num9 = document.getElementById('numero9')
+
+const borrarTodo = document.getElementById('botonC')
+const igual = document.getElementById('botonIgual')
+const sumar = document.getElementById('botonSumar')
+const restar = document.getElementById('botonRestar')
+const multiplicar = document.getElementById('botonMultiplicar')
+const dividir = document.getElementById('botonDividir')
+
+let numDigitado = document.getElementById('numDigitado');
 const pantallaSuperior = document.getElementById('pantallaSuperior');
 const operando = document.getElementById('operando');
-const calculadora = document.querySelector('.contenedor__calculadora');
 
-let inputSeleccionado = null;
-let num2;
+pantallaSuperior.textContent = "";
+let numGuardado;
 
-num1.disabled = false;
-
-num1.addEventListener('click', function() {
-    inputSeleccionado = num1;
+borrarTodo.addEventListener(`click`, function() {
+    numGuardado.value = "";
+    numDigitado.value = "";
+    pantallaSuperior.textContent = "";
+    operando.textContent = "";
 })
 
-calculadora.addEventListener(`click`, function(evento) {
-    pantallaSuperior.textContent = "";
-    if (evento.target.classList.contains('numeros')) {
-        if (inputSeleccionado) {
-            inputSeleccionado.value += evento.target.textContent;
-        }
-    } else
-    if (evento.target.id == "boton--sumar") {
-        operando.textContent = "+";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-        console.log(Number(num1.value))
-    } else if (evento.target.id == "boton--restar") {
-        operando.textContent = "-";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == "boton--multiplicar") {
-        operando.textContent = "*";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == "boton--dividir") {
-        operando.textContent = "/";
-        num2 = num1.value;
-        num1.value = "";
-        num1.disabled = true;
-    } else if (evento.target.id == 'boton--C') {
-        num1.value = "";
-        num2 = "";
-        pantallaSuperior.textContent = "";
+igual.addEventListener(`click`, function() {
+    if (operando.textContent == "+") {
+        pantallaSuperior.textContent = Number(numGuardado) + Number(numDigitado.value);
+        numDigitado.value = "";
         operando.textContent = "";
-        num1.disabled = false;
-    } else if (evento.target.id = "boton--igual") {
-        if (operando.textContent == "+") {
-            pantallaSuperior.textContent = Number(num1.value) + Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "-") {
-            pantallaSuperior.textContent = Number(num1.value) - Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "*") {
-            pantallaSuperior.textContent = Number(num1.value) * Number(num2);
-            num2 = "";
-        } else if (operando.textContent == "/") {
-            if ((num2 != "") & (num1.value == "")) {
-                pantallaSuperior.textContent = `Debes ingresar un divisor`;
-            } else if ((num2 == "") & (num1.value != "")) {
-                pantallaSuperior.textContent = `0`;
-            } else if ((num2 != "") & (num1.value == 0)) {
-                pantallaSuperior.textContent = `No se puede dividir entre 0`;
-            } else if ((num1.value != "") & (num2 != "")) {
-                pantallaSuperior.textContent = Number(num2) / Number(num1.value);
-                num2 = "";
-            }
+    } else if (operando.textContent == "-") {
+        pantallaSuperior.textContent = Number(numGuardado) - Number(numDigitado.value);
+        numDigitado.value = "";
+        operando.textContent = "";
+    } else if (operando.textContent == "*") {
+        pantallaSuperior.textContent = Number(numGuardado) * Number(numDigitado.value);
+        numDigitado.value = "";
+        operando.textContent = "";
+    } else if (operando.textContent == "/") {
+        if ((numGuardado != "") & (numDigitado.value == "")) {
+            pantallaSuperior.textContent = `Debes ingresar un divisor`;
+        } else if ((numGuardado == "") & (numDigitado.value != "")) {
+            pantallaSuperior.textContent = `0`;
+        } else if ((numGuardado != "") & (numDigitado.value == 0)) {
+            pantallaSuperior.textContent = `No se puede dividir entre 0`;
+        } else if ((numDigitado.value != "") & (numGuardado != "")) {
+            pantallaSuperior.textContent = Number(numGuardado) / Number(numDigitado.value);
+            numDigitado.value = "";
+            operando.textContent = "";
+
         }
     }
+})
+
+multiplicar.addEventListener(`click`, function() {
+    operando.textContent = "*";
+    numGuardado = numDigitado.value;
+    numDigitado.value = "";
+})
+
+dividir.addEventListener(`click`, function() {
+    operando.textContent = "/";
+    numGuardado = numDigitado.value;
+    numDigitado.value = "";
+})
+
+sumar.addEventListener(`click`, function() {
+    operando.textContent = "+";
+    numGuardado = numDigitado.value;
+    numDigitado.value = "";
+})
+
+restar.addEventListener(`click`, function() {
+    operando.textContent = "-";
+    numGuardado = numDigitado.value;
+    numDigitado.value = "";
+})
+
+
+num0.addEventListener(`click`, function() {
+    numDigitado.value += 0;
+})
+
+num1.addEventListener(`click`, function() {
+    numDigitado.value += 1;
+})
+
+num2.addEventListener(`click`, function() {
+    numDigitado.value += 2;
+})
+
+num3.addEventListener(`click`, function() {
+    numDigitado.value += 3;
+})
+
+num4.addEventListener(`click`, function() {
+    numDigitado.value += 4;
+})
+
+num5.addEventListener(`click`, function() {
+    numDigitado.value += 5;
+})
+
+num6.addEventListener(`click`, function() {
+    numDigitado.value += 6;
+})
+
+num7.addEventListener(`click`, function() {
+    numDigitado.value += 7;
+})
+
+num8.addEventListener(`click`, function() {
+    numDigitado.value += 8;
+})
+
+num9.addEventListener(`click`, function() {
+    numDigitado.value += 9;
 })
 
 /* --------------- ESCUCHA POR TECLADO ---------------*/
@@ -87,8 +140,6 @@ document.addEventListener('keydown', function(event) {
         multiplicar.click();
     } else if (teclaPresionada === '/') {
         dividir.click();
-    } else if (teclaPresionada === 'Backspace') { // Ejecutar función de borrar uno
-        borrarUno.click();
     } else if (teclaPresionada === "0") {
         num0.click()
     } else if (teclaPresionada === "1") {
