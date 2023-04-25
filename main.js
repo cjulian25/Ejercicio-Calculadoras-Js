@@ -37,7 +37,7 @@ function contenido() {
 }
 
 sumar.addEventListener('click', function() {
-    if ((array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/")) {
+    if ((array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "+"
     } else {
         array.push("+");
@@ -46,7 +46,7 @@ sumar.addEventListener('click', function() {
 })
 
 restar.addEventListener(`click`, function() {
-    if ((array[array.length - 1] == "-") || (array[array.length - 1] == "+") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/")) {
+    if ((array[array.length - 1] == "-") || (array[array.length - 1] == "+") || (array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "-"
     } else {
         array.push("-");
@@ -55,7 +55,7 @@ restar.addEventListener(`click`, function() {
 })
 
 multiplicar.addEventListener(`click`, function() {
-    if ((array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-")) {
+    if ((array[array.length - 1] == "*") || (array[array.length - 1] == "/") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "*"
     } else {
         array.push("*");
@@ -64,7 +64,7 @@ multiplicar.addEventListener(`click`, function() {
 })
 
 dividir.addEventListener(`click`, function() {
-    if ((array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-")) {
+    if ((array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "/"
     } else {
         array.push("/");
@@ -73,7 +73,7 @@ dividir.addEventListener(`click`, function() {
 })
 
 raizCuadrada.addEventListener(`click`, function() {
-    if (array[array.length - 1] == "√") {
+    if ((array[array.length - 1] == "√") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "^") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "√"
     } else {
         array.push("√");
@@ -82,7 +82,7 @@ raizCuadrada.addEventListener(`click`, function() {
 })
 
 punto.addEventListener(`click`, function() {
-    if (array[array.length - 1] == ".") {
+    if ((array[array.length - 1] == ".") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == "√") || (array[array.length - 1] == "^")) {
         array[array.length - 1] = "."
     } else {
         array.push(".");
@@ -91,7 +91,7 @@ punto.addEventListener(`click`, function() {
 })
 
 potencia.addEventListener(`click`, function() {
-    if (array[array.length - 1] == "^") {
+    if ((array[array.length - 1] == "^") || (array[array.length - 1] == "√") || (array[array.length - 1] == "/") || (array[array.length - 1] == "*") || (array[array.length - 1] == "+") || (array[array.length - 1] == "-") || (array[array.length - 1] == ".")) {
         array[array.length - 1] = "^"
     } else {
         array.push("^");
